@@ -7,6 +7,7 @@ defmodule EventsAppWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+
   end
 
   pipeline :api do
@@ -19,6 +20,7 @@ defmodule EventsAppWeb.Router do
     get "/", PageController, :index
     resources "/events", EventController
     resources "/usrs", UsrController
+    resources "/sessions", SessionController, only: [:create, :delete], singleton: true
   end
 
   # Other scopes may use custom stacks.

@@ -36,6 +36,10 @@ defmodule EventsApp.Usrs do
 
   """
   def get_usr!(id), do: Repo.get!(Usr, id)
+  def get_usr(id), do: Repo.get(Usr, id)
+  def get_user_by_name(name) do
+    Repo.get_by(Usr, name: name)
+  end
 
   @doc """
   Creates a usr.

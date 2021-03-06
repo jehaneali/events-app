@@ -19,14 +19,14 @@ defmodule EventsAppWeb.UsrControllerTest do
     end
   end
 
-  describe "new usr" do
+  describe "new user" do
     test "renders form", %{conn: conn} do
       conn = get(conn, Routes.usr_path(conn, :new))
       assert html_response(conn, 200) =~ "New Usr"
     end
   end
 
-  describe "create usr" do
+  describe "create user" do
     test "redirects to show when data is valid", %{conn: conn} do
       conn = post(conn, Routes.usr_path(conn, :create), usr: @create_attrs)
 
