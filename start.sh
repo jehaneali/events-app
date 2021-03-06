@@ -6,4 +6,4 @@ export NODEBIN='pwd'/assets/node_modules/.bin
 export PATH="$PATH:$NODEBIN"
 export DATABSE_URL=ecto://events:events@localhost/events_app_prod
 # TODO change this
-_build/prod/rel/multi_bull/bin/multi_bull start
+_build/dev/rel/events_app/bin/events_app start
