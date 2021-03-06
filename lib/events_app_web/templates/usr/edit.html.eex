@@ -1,0 +1,5 @@
+<h1>Edit Usr</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.usr_path(@conn, :update, @usr)) %>
+
+<span><%= link "Back", to: Routes.usr_path(@conn, :index) %></span>

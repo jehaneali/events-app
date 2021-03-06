@@ -1,0 +1,18 @@
+<h1>Show Usr</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @usr.name %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @usr.email %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.usr_path(@conn, :edit, @usr) %></span>
+<span><%= link "Back", to: Routes.usr_path(@conn, :index) %></span>

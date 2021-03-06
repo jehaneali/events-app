@@ -1,0 +1,28 @@
+<h1>Listing Usrs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for usr <- @usrs do %>
+    <tr>
+      <td><%= usr.name %></td>
+      <td><%= usr.email %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.usr_path(@conn, :show, usr) %></span>
+        <span><%= link "Edit", to: Routes.usr_path(@conn, :edit, usr) %></span>
+        <span><%= link "Delete", to: Routes.usr_path(@conn, :delete, usr), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Usr", to: Routes.usr_path(@conn, :new) %></span>

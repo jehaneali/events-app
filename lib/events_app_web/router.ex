@@ -17,6 +17,8 @@ defmodule EventsAppWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    resources "/events", EventController
+    resources "/usrs", UsrController
   end
 
   # Other scopes may use custom stacks.

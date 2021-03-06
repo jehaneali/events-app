@@ -1,5 +1,11 @@
 # EventsApp
 
+NOTE: code in this project adapted from code from photo_blog by Nat Tuck: 
+https://github.com/NatTuck/scratch-2021-01.git
+
+I also accidentally messed up when creating the User database so please disregard anything that says 
+"user" and only look at things that have "usr", thanks!
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
