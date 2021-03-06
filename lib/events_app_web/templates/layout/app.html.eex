@@ -11,18 +11,30 @@
   <body>
    <div role="main" class="container">
     <div class="row">
-      <div class= "col">
+      <div class= "col my-2">
         <p><%= link "Home",  to: "/" %></p>
         </div>
-        <div class="col">
+        <div class="col my-2">
       <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
         <p><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li> </p>
       <% end %>
       </div>
+      <%= if @conn.assigns[:current_usr] do%>
+        Usr: <%= @current_usr.email %> |
+        <%= link("Log out", to: Routes.session_path(@conn, :delete), method: :delete) %>
+      <% else %>
       <div class="col">
+        <%= form_for @conn, Routes.session_path(@conn, :create), [class: "form-inline"], fn f -> %>
+        <%= text_input f, :email, class: "form-control" %>
+        <%=submit "Login", class: "btn btn-dark" %>
+        <% end %>
+      </div>
+      <div class = "col">
         <%= link "Sign Up", to: Routes.usr_path(@conn, :new) %>
       </div>
+      <% end %>
       </div>
+      <%= link "Add an Event", to: Routes.event_path(@conn, :new), class: "btn btn-success" %>
 
       <%= if get_flash(@conn, :info) do %>
         <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
@@ -32,6 +44,7 @@
       <% end %>
 
       <%= @inner_content %>
+      <%# <%= link "Add an Event", to: Routes.event_path(@conn, :new), class: "btn btn-success" %> 
     </div>
   </body>
 </html>
