@@ -3,7 +3,7 @@
 NOTE: code in this project adapted from code from photo_blog by Nat Tuck: 
 https://github.com/NatTuck/scratch-2021-01.git
 
-Also please note that instead of "users" in this app, they are called "usrs".
+Also please note that instead of "users" in this app, they are intentionally called "usrs".
 
 To start your Phoenix server:
 
