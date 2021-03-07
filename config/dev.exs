@@ -2,7 +2,7 @@ use Mix.Config
 
 # Configure your database
 config :events_app, EventsApp.Repo,
-  username: "events_app",
+  username: "events",
   password: "events",
   database: "events_app_prod",
   hostname: "localhost",
