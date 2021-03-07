@@ -15,7 +15,10 @@ mix compile
 (cd assets && webpack --mode production)
 mix phx.digest
 
-mix ecto.create
+export SECRET_KEY_BASE=E8L3Bzz6N+p5bi3wU8u5YILQT+V+Jw0ZaJyPDTwrK4ir9pAZ455QDFbFHR9f1end
+export DATABSE_URL=ecto://events_app:events@localhost/events_app_prod
+
+#mix ecto.create
 mix ecto.migrate
 
 echo "Generating release..."
@@ -26,4 +29,4 @@ mix release
 
 echo "Starting app..."
 
-PROD=t ./start.sh
+#PROD=t ./start.sh
