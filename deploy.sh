@@ -11,15 +11,17 @@ echo "Building..."
 
 mix deps.get --only prod
 mix compile
+export SECRET_KEY_BASE=E8L3Bzz6N+p5bi3wU8u5YILQT+V+Jw0ZaJyPDTwrK4ir9pAZ455QDFbFHR9f1end
+export DATABSE_URL=ecto://events:events@localhost/events_app_prod
+mix ecto.migrate
 (cd assets && npm install)
 (cd assets && webpack --mode production)
 mix phx.digest
 
-export SECRET_KEY_BASE=E8L3Bzz6N+p5bi3wU8u5YILQT+V+Jw0ZaJyPDTwrK4ir9pAZ455QDFbFHR9f1end
-export DATABSE_URL=ecto://events:events@localhost/events_app_prod
+
 
 #mix ecto.create
-mix ecto.migrate
+
 
 echo "Generating release..."
 mix release
