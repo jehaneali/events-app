@@ -6,6 +6,7 @@ defmodule EventsApp.Events.Event do
     field :description, :string
     field :name, :string
     field :when, :date
+    belongs_to :usr, EventsApp.Usrs.Usr
 
     timestamps()
   end
