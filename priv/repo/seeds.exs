@@ -14,8 +14,8 @@ alias EventsApp.Repo
 alias EventsApp.Usrs.Usr
 alias EventsApp.Events.Event
 
-sara = Repo.insert!(%Usr{name: "sara", email: "sara@gmail.com"})
-jada = Repo.insert!(%Usr{name: "jada", email: "jada@gmail.com"})
+sara = Repo.insert!(%Usr{name: "Sara", email: "sara@gmail.com"})
+jada = Repo.insert!(%Usr{name: "Jada", email: "jada@gmail.com"})
 
-Repo.insert!(%Event{usr_id: sara.id, name: "Sara", when: ~D[2021-06-15], description: "Sara says what's up!"})
-Repo.insert!(%Event{usr_id: jada.id, name: "Jada", when: ~D[2022-02-24], description: "Jada got a new plant"})
+Repo.insert!(%Event{usr_id: sara.id, name: "Picnic", when: ~D[2021-06-15], description: "Sara is having a picnic!"})
+Repo.insert!(%Event{usr_id: jada.id, name: "Paint Night", when: ~D[2022-02-24], description: "Jada's hosting a paint night!"})
