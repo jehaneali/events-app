@@ -43,7 +43,7 @@ defmodule EventsApp.Photos do
   def base_path(hash) do
     # TODO maybe change
     Path.expand("~/.local/data/events_app")
-    |> Path.join("#{Mix.env}")
+    # |> Path.join("#{Mix.env}")
     |> Path.join(String.slice(hash, 0, 2))
     |> Path.join(String.slice(hash, 2, 30))
   end
