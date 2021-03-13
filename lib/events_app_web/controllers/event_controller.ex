@@ -18,8 +18,17 @@ defmodule EventsAppWeb.EventController do
   end
 
   def require_owner(conn, _args) do
-    usr = conn.assigns[:current_user]
+    usr = conn.assigns[:current_usr]
     event = conn.assigns[:event]
+
+    if usr.id == event.usr_id do
+      conn
+    else
+      conn
+      |> put_flash(:error, "You are not the owner of that event!")
+      |> redirect(to: Routes.page_path(conn, :index))
+      |> halt()
+    end
   end
 
   def index(conn, _params) do
