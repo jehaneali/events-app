@@ -10,3 +10,25 @@
 <div>
     <strong>Description:</strong>
     <%= @event.description %>
+
+<h2>Add a Comment</h2>
+
+<%= if have_current_usr?(@conn) do %>
+<%= render(
+    EventsAppWeb.CommentView,
+    "form.html",
+    changeset: @new_comment,
+    action: Routes.comment_path(@conn, :create)
+) %>
+<%end %>
+
+<h2> Comments </h2>
+<%= for comm <- @event.comments do %>
+<div class="card">
+<div class = "card-body">
+<h5> Posted by <%= comm.usr.name %> </h5>
+<p class = "card-text"><%= comm.body %></p>
+</div>
+</div>
+
+<%end %>

@@ -38,6 +38,10 @@ defmodule EventsApp.Events do
   """
   def get_event!(id), do: Repo.get!(Event, id)
 
+  def load_comments(%Event{} = event) do
+    Repo.preload(event, [comments: :usr])
+  end
+
   @doc """
   Creates a event.
 

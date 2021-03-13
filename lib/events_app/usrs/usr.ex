@@ -7,6 +7,7 @@ defmodule EventsApp.Usrs.Usr do
     field :name, :string
     has_many :events, EventsApp.Events.Event
     field :photo_hash, :string
+    has_many :comments, EventsApp.Events.Comment
 
     timestamps()
   end
