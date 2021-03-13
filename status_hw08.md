@@ -17,7 +17,7 @@ http://events.jehaneali.site
 
 
 4. Is your app functionality complete? If not, what's missing?
-Not complete, working on event list 
+Photos for users -- attempted but could not get them to show up.
 
 
 5. Is your app properly deployed? If not, what went wrong?
