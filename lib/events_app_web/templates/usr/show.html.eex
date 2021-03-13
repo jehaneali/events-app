@@ -13,6 +13,12 @@
   </li>
 
 </ul>
+<div>
+<img
+src="<%= Routes.event_path(@conn, :photo, @usr)%>"
+alt="">
+
+</div>
 
 <span><%= link "Edit", to: Routes.usr_path(@conn, :edit, @usr) %></span>
 <span><%= link "Back", to: Routes.usr_path(@conn, :index) %></span>

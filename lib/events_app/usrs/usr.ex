@@ -5,7 +5,7 @@ defmodule EventsApp.Usrs.Usr do
   schema "usrs" do
     field :email, :string
     field :name, :string
-    has_many :posts, EventsApp.Events.Event
+    has_many :events, EventsApp.Events.Event
     field :photo_hash, :string
 
     timestamps()

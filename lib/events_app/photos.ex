@@ -15,6 +15,14 @@ defmodule EventsApp.Photos do
     save_photo(name, data, hash, meta)
   end
 
+  def load_photo(hash) do
+    data = File.read!(data_path(hash))
+    meta = File.read!(meta_path(hash))
+    |> Jason.decode!
+    {:ok, Map.get(meta, :name), data}
+
+  end
+
   def save_photo(name, data, hash, meta) do
     meta = Map.update!(meta, :refs, &(&1 + 1))
     File.write!(meta_path(hash), Jason.encode!(meta))

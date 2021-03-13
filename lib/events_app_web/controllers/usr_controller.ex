@@ -4,6 +4,9 @@ defmodule EventsAppWeb.UsrController do
   alias EventsApp.Usrs
   alias EventsApp.Usrs.Usr
   alias EventsApp.Photos
+  alias EventsAppWeb.Plugs
+
+  plug Plugs.RequireUsr when action not in [:index, :show, :new, :create]
 
   def index(conn, _params) do
     usrs = Usrs.list_usrs()
@@ -37,6 +40,14 @@ defmodule EventsAppWeb.UsrController do
     render(conn, "show.html", usr: usr)
   end
 
+  def photo(conn, %{"id" => id}) do
+    usr = Usrs.get_usr!(id)
+    {:ok, _name, data} = Photos.load_photo(usr.photo_hash)
+    conn
+    |> put_resp_content_type("image/jpeg")
+    |> send_resp(200, data)
+  end
+
   def edit(conn, %{"id" => id}) do
     usr = Usrs.get_usr!(id)
     changeset = Usrs.change_usr(usr)
@@ -45,9 +56,14 @@ defmodule EventsAppWeb.UsrController do
 
   def update(conn, %{"id" => id, "usr" => usr_params}) do
     usr = Usrs.get_usr!(id)
-    # up = usr_params["photo"]
+    up = usr_params["photo"]
 
-
+    usr_params = if up do
+      {:ok, hash} = Photos.save_photo(up.filename, up.path)
+      Map.put(usr_params, "photo_hash", hash)
+    else
+      usr_params
+    end
 
     case Usrs.update_usr(usr, usr_params) do
       {:ok, usr} ->
