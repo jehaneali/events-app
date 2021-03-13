@@ -3,10 +3,9 @@ use Mix.Config
 # Configure your database
 config :events_app, EventsApp.Repo,
 #TODO change username back to events
-  username: "events_app",
+  username: "events",
   password: "events",
-  # TODO change username back to events_app_prod
-  database: "events_app_dev",
+  database: "events_app_prod",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
