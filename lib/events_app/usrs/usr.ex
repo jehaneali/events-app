@@ -6,6 +6,7 @@ defmodule EventsApp.Usrs.Usr do
     field :email, :string
     field :name, :string
     has_many :posts, EventsApp.Events.Event
+    field :photo_hash, :string
 
     timestamps()
   end
@@ -13,7 +14,7 @@ defmodule EventsApp.Usrs.Usr do
   @doc false
   def changeset(usr, attrs) do
     usr
-    |> cast(attrs, [:name, :email])
-    |> validate_required([:name, :email])
+    |> cast(attrs, [:name, :email, :photo_hash])
+    |> validate_required([:name, :email, :photo_hash])
   end
 end

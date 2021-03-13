@@ -3,6 +3,7 @@ defmodule EventsAppWeb.UsrController do
 
   alias EventsApp.Usrs
   alias EventsApp.Usrs.Usr
+  alias EventsApp.Photos
 
   def index(conn, _params) do
     usrs = Usrs.list_usrs()
@@ -15,6 +16,11 @@ defmodule EventsAppWeb.UsrController do
   end
 
   def create(conn, %{"usr" => usr_params}) do
+    up = usr_params["photo"]
+    {:ok, hash} = Photos.save_photo(up.filename, up.path)
+    usr_params = usr_params
+    # |> Map.put("user_id", conn.assigns[:current_user].id)
+    |> Map.put("photo_hash", hash)
     case Usrs.create_usr(usr_params) do
       {:ok, usr} ->
         conn
@@ -39,6 +45,9 @@ defmodule EventsAppWeb.UsrController do
 
   def update(conn, %{"id" => id, "usr" => usr_params}) do
     usr = Usrs.get_usr!(id)
+    # up = usr_params["photo"]
+
+
 
     case Usrs.update_usr(usr, usr_params) do
       {:ok, usr} ->

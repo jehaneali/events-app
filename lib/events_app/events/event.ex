@@ -14,7 +14,7 @@ defmodule EventsApp.Events.Event do
   @doc false
   def changeset(event, attrs) do
     event
-    |> cast(attrs, [:name, :when, :description])
-    |> validate_required([:name, :when, :description])
+    |> cast(attrs, [:name, :when, :description, :usr_id])
+    |> validate_required([:name, :when, :description, :usr_id])
   end
 end
