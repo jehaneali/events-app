@@ -5,6 +5,10 @@ https://github.com/NatTuck/scratch-2021-01.git
 
 Also please note that instead of "users" in this app, they are intentionally called "usrs".
 
+When creating an invite, the host should put in the email of the invitee, and for message, 
+should put in a message for the invitee.  Then, when the invitee responds, 
+they should edit the invitation response to say yes/no/maybe.
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`

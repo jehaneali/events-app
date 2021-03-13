@@ -11,6 +11,26 @@
     <strong>Description:</strong>
     <%= @event.description %>
 
+<h2>Add an Invite</h2>
+<%= if have_current_usr?(@conn) do %>
+<%= render(
+    EventsAppWeb.InviteView, "form.html",
+    changeset: @new_invite,
+    action: Routes.invite_path(@conn, :create)
+) %>
+<%end %>
+
+<h2> Invites </h2>
+<%= for inv <- @event.invites do %>
+<div class="card">
+<div class = "card-body">
+<h5> Invited: <%= inv.email %> </h5>
+<p class = "card-text"><%= inv.body %></p>
+</div>
+</div>
+
+<%end %>
+
 <h2>Add a Comment</h2>
 
 <%= if have_current_usr?(@conn) do %>

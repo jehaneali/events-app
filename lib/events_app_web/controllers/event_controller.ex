@@ -58,12 +58,17 @@ defmodule EventsAppWeb.EventController do
   def show(conn, %{"id" => id}) do
     event = conn.assigns[:event]
     |> Events.load_comments()
+    |> Events.load_invites()
     comm = %EventsApp.Comments.Comment {
       event_id: event.id,
       usr_id: current_usr_id(conn)
     }
+    inv = %EventsApp.Invites.Invite {
+      event_id: event.id
+    }
+    new_invite = EventsApp.Invites.change_invite(inv)
     new_comment = EventsApp.Comments.change_comment(comm)
-    render(conn, "show.html", event: event, new_comment: new_comment)
+    render(conn, "show.html", event: event, new_comment: new_comment, new_invite: new_invite)
   end
 
   def edit(conn, %{"id" => id}) do

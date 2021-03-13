@@ -42,6 +42,10 @@ defmodule EventsApp.Events do
     Repo.preload(event, [comments: :usr])
   end
 
+  def load_invites(%Event{} = event) do
+    Repo.preload(event, [:invites])
+  end
+
   @doc """
   Creates a event.
 
